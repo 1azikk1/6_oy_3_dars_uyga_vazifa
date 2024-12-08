@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Courses</title>
+    <link rel="icon" href="https://www.biztechcs.com/wp-content/uploads/2021/07/OG-12-Best-Programming-Languages-for-Web-App-Development-jpg-webp.webp" type="image/webp">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .title {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .courses-list, .students-list {
+            list-style-type: none;
+        }
+
+        .course-item, .student-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .course-item:hover, .student-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-item h2, .student-item p {
+            margin: 10px 0;
+        }
+
+        .course-item h2 {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .course-image {
+            width: 100%;
+            max-width: 320px;
+            margin-top: 10px;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .course-item:hover .course-image {
+            transform: scale(1.05);
+        }
+
+        .course-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .course-info span {
+            font-weight: bold;
+        }
+
+        .view-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .view-button:hover {
+            background-color: #45a049;
+        }
+
+        .course-details {
+            display: none;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #444;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-details p {
+            margin-bottom: 10px;
+        }
+
+        .course-details a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .course-details a:hover {
+            color: #45a049;
+        }
+
+        .student-item {
+            position: relative;
+            background-color: #eaf7e5;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-item:hover {
+            background-color: #c1e5c2;
+        }
+
+        .student-item .student-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .student-item .student-email {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .student-item .student-course {
+            font-size: 1rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .student-item .student-details {
+            display: none;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .toggle-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+            .course-item, .student-item {
+                padding: 10px;
+            }
+            .course-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Available Courses</h1>
+        <ul class="courses-list">
+            {% for course in courses %}
+            <li class="course-item">
+                <h2>{{ course.title }}</h2>
+                <img src="{{ course.course_photo.url }}" alt="{{ course.title }}" class="course-image">
+                <p class="course-description">{{ course.description }}</p>
+                <div class="course-info">
+                    <span><b>Starts From:</b> {{ course.created_at }}</span>
+                    <button class="view-button">View Details</button>
+                </div>
+                <div class="course-details">
+                    <p><b>Interested in this course? Contact us for more details:</b></p>
+                    <p><b>Phone:</b> <a href="tel:+998950314204">+998950314204</a></p>
+                    <p><b>Email:</b> <a href="mailto:ahmadjonovazizbek2007@gmail.com">ahmadjonovazizbek2007@gmail.com</a></p>
+                    <p><b>Telegram:</b> <a href="https://t.me/ahmadjonovazizbek" target="_blank">Click here to contact via Telegram</a></p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h1 class="title">Students</h1>
+        <ul class="students-list">
+            {% for student in students %}
+            <li class="student-item">
+                <p class="student-name">{{ student.name }}</p>
+                <p class="student-email"><b>Email Address:</b> {{ student.email }}</p>
+                <p class="student-course"><b>Course:</b> {{ student.course }}</p>
+                <button class="toggle-button">Show Details</button>
+                <div class="student-details" style="display: none;">
+                    <p><b>Enrolled At:</b><br> {{ student.enrolled_at }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Courses "View Details" button functionality
+            const viewButtons = document.querySelectorAll('.view-button');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const courseDetails = button.closest('.course-item').querySelector('.course-details');
+                    courseDetails.style.display = (courseDetails.style.display === 'none' || courseDetails.style.display === '') ? 'block' : 'none';
+                    button.textContent = (courseDetails.style.display === 'block') ? 'Hide Details' : 'View Details';
+                });
+            });
+
+            // Students "Show Details" button functionality
+            const toggleButtons = document.querySelectorAll('.toggle-button');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const studentDetails = button.closest('.student-item').querySelector('.student-details');
+                    studentDetails.style.display = (studentDetails.style.display === 'none' || studentDetails.style.display === '') ? 'block' : 'none';
+                    button.textContent = (studentDetails.style.display === 'block') ? 'Hide Details' : 'Show Details';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
